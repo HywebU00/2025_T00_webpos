@@ -1,0 +1,272 @@
+﻿@charset "utf-8";
+@import url("reveal.css"); 
+@import url("../keyboard/style.css"); 
+
+/*主功能*/
+.main{ clear:both; padding:0; width:100%; max-height:715px; overflow:hidden; background:#fff; margin:15px 0 0; text-align:center;}
+
+.item {
+	/*width:97%;*/
+	margin:0;
+	padding:0 5px;
+	background-color:#fff;
+}
+.item table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size:1.15em;
+	background-color:#FFF;
+	margin:0;
+	width:100%;
+    border-top: 1px dotted #666;
+}
+.item table th { white-space:nowrap; background-color:#333; padding: 5px 7px;
+    border: 1px dotted #666;
+    color:#fff;
+    width:20%;
+    text-align:right;
+}
+.item table td {
+    vertical-align: middle;
+    text-align:left;
+    padding: 5px 7px;
+    border-right: 1px dotted #666;
+    border-bottom: 1px dotted #666;
+    border-left: 1px dotted #666;
+	white-space:nowrap;/* 不换行 */ 
+}
+.item table td.number { text-align:right;}
+.item table td.detail { border-top:1px solid #C0C0C0; border-bottom:1px solid #999; font-size:.85em;}
+.item table td.detail table{ border-collapse:collapse; background:none; border:none;}
+.item table td.detail table td{ width:50%;background:none; border:none; font-size:.85em;}
+.item table td.detail table tr:hover{ background:none;}
+.item table td.title {}
+.item table td.title .text-overflow {
+	width:30em;
+	display:block;
+	word-break:keep-all;/* 不换行 */ 
+	white-space:nowrap;/* 不换行 */ 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+.of2 {width:15em !important;}
+.text-overflow span{ font-size:.75em; color:#aaa;}
+.item table tr:hover{ text-decoration:none;background: #fbfae9; cursor: pointer;}
+.item table tr.selected{background:#FFE6E6;}
+.container{ height:300px; overflow-y:scroll;}
+
+.text-overflowhidden {
+	width:6em;
+	display:block;
+	word-break:keep-all;/* 不换行 */ 
+	white-space:nowrap;/* 不换行 */ 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+.totalinfo tr{height:40px;;}
+.totalinfo th{width:12% !important;}
+.totalinfo td{min-width:20% !important; width:20%;}
+
+
+/*浮動選單按鈕設定*/
+#LM1 ul li input[type="button"], #LM3 ul li input[type="button"]{ background-color:#FFFFFF;}
+#LM1 ul li input[type="button"]:hover, #LM3 ul li input[type="button"]:hover {
+        position: relative;
+        top: 1px;
+        left: 1px;
+        border-color: #e5e5e5;
+        cursor: pointer;
+}
+
+.dkeyboard1, .dkeyboard2, .dkeyboard3, .rightcontrol{
+	position:fixed; opacity:0.95; padding:7px; z-index:99; right:7px;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0;
+}
+.dkeyboard1 a, .dkeyboard2 a, .dkeyboard3 a{ display:block;}
+.dkeyboard1{bottom:115px; background:#333; width:25px;}
+.dkeyboard2{bottom:10px; background:#333; width:25px;}
+.dkeyboard3{bottom:-6px; right:1.75em; background:#CC0000; width:20%;
+    border-radius: 0 0 5px 5px !important;
+    text-align:center !important;
+}
+.rightcontrol{bottom:255px; right:7px;}
+
+#LM1, #LM2, #LM3{ position:fixed; bottom:0; left:0; background:#333; opacity:0.95; width:952px; height:200px; padding:15px 0 10px; z-index:1001;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.blockA{width:300px; margin:0; padding:0; display:inline-block; vertical-align:top;}
+.blockB{width:110px; margin:0; padding:0; display:inline-block; vertical-align:top;}
+.blockC{width:215px; margin:0; padding:0; display:inline-block; vertical-align:top;}
+.blockD{width:310px; margin:0; padding:0; display:inline-block; vertical-align:top;}
+.blockE{width:530px; margin:0; padding:0; display:inline-block; vertical-align:top; text-align:left;}
+
+.leftbar {
+	width:24%; display:inline-block; margin:0; padding:0; vertical-align:top;
+    border-right: 1px solid #666; min-height:625px; overflow:hidden;
+}
+.topbar{text-align:left; vertical-align:bottom; width:100%;}
+.rightcontent {width:75%; display:inline-block; margin:0; padding:0; vertical-align:top;}
+.maincontent {width:100%; margin:0; padding:0; vertical-align:top;}
+
+.ui-tabs-nav {width:100%; margin:0 0 10px 0; padding:0 15px; border-bottom: 1px solid #999;}
+.ui-tabs-nav li {
+	font-size:1.15em;
+	line-height:1.75em;
+    white-space: nowrap;
+    text-align:right;
+    list-style: none;
+    display: inline-block;
+    margin:0 0 -1px;
+    padding: 3px 15px 7px;
+    border: 1px solid #E3E3E3;
+    border-bottom: none;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+    background:#C0C0C0;
+}
+.ui-tabs-nav li a { color:#666; display:block;}
+.ui-tabs-nav li.active { font-size:1.25em; background:#fff; border: 1px solid #999; border-bottom: 1px solid #fff; padding: 3px 16px 7px;}
+.ui-tabs-nav li.active a {color:#000;}
+
+.saleinfo{}
+.saleinfo table{ border-collapse:collapse; padding:0; margin:0 0 10px; border:none; border-top:1px dotted #999; /*border-bottom:1px dotted #999;*/}
+.saleinfo table caption{ font-size:.85em; font-weight:normal; text-align:left; margin:5px 0;}
+.saleinfo table th{ border:none; border-bottom:1px dotted #999; width:15%; background:#86C2FF; text-align:left; font-weight:normal; font-size:.85em; color:#fff;}
+.saleinfo table td{ border:none; border-bottom :1px dotted #999; background:#fff;}
+.saleinfo table tr:hover{ background:none; cursor:default;}
+.saleinfo .totalprice{width:35%; float:left; margin-right:10px; font-size:2.65em;}
+.saleinfo .totalprice table{height:88px;}
+.saleinfo .totalprice table th{width:35%;font-size:.45em;}
+.saleinfo .totalprice table caption{font-size:.35em;}
+
+table.search {
+    border: 2px solid #E4E4E4;
+    width: 97%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 10px;
+    background-color:#FFF;
+}
+table.search caption{ display: table-caption;}
+table.search th {
+    background: #3fadc9;
+    color: #FFF;
+    border: 1px solid #E4E4E4;
+    padding: 9px 10px;
+    vertical-align: middle;
+    text-align: right;
+    width:20%;
+}
+table.search td {
+    vertical-align: top;
+    text-align: left;
+    padding: 5px 10px;
+    border: 1px solid #E4E4E4;
+}
+
+.List h2 {clear:both;}
+.List{margin:10px 35px 0 0; text-align:left; max-height:470px; overflow-y:hidden;}
+.List ol{ margin:0; padding:0; overflow-y:auto; height:465px; width:99%;}
+.List ol li{ display:inline-block; width:45%; max-height:100px; vertical-align:top; position:relative;}
+.List ol li.select{ display:block; width:97%; height:auto;}
+.search .List ol{ overflow-y:auto; height:310px;}
+.selected {background:#D2E9FF !important;}
+
+.List ol.msearch{ height:175px;}
+.List ol.msearch li{ width:95%;}
+.List ol.msearch li .control {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.List ol.msearch li .control a.smiddle {
+    width: 73px;
+    height: 23px;
+    vertical-align: middle;
+    padding: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    color: #fff;
+    background:#ccc;
+}
+.List ol li a{ display:block;}
+.List ol li:hover{ background-color:#FFFFCC;}
+.List ol li{ list-style:none; margin:5px; padding:15px 10px; background-color:#FFFFFF; border:1px dotted #666;}
+.List ol li .title{ font-size:1.35em; font-weight:bold; display:block; margin-top:10px; margin-right:10px; max-width:425px;
+	word-break:keep-all;/* 不换行 */ 
+	white-space:nowrap;/* 不换行 */ 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+
+
+.List ol li .barcode{ color:#666666; display:inline-block; width:185px; border-left: 1px dotted #999; padding-left:10px;}
+.List ol li .detail{ color:#666666; margin-left:10px; display:inline-block; border-left: 1px dotted #999; padding-left:10px;}
+.List ol li .unit{ margin-right:5px; margin-left:10px; display:inline-block; min-width:85px; border-left: 1px dotted #999; padding-left:10px;}
+.List ol li .note{ font-size:.65em; margin-left:10px; color:#333;}
+.List ol li .code{ font-size:.85em; font-weight:normal; margin-right:10px;}
+.List ol li .type{ margin-right:7px; font-size:.7em; color:#666; font-weight:normal;}
+
+.List ol li .priceinfo{ position:absolute; top:40px; right:10px; text-align:right;}
+.List ol li .price{ display:inline-block;}
+.List ol li .price span{ font-size:1.25em; font-weight:bold; color:#CC0000; display:inline-block; min-width:38px;}
+.List ol li .price span.count{ font-size:1.25em;  min-width:45px;}
+
+.List ol li .subsidy em{font-size:1.15em; color:#CC0000;font-style:normal;}
+
+.List ol li .toprice{ margin-top:7px; margin-right:10px; display:inline-block; font-weight:normal; color:#999999;}
+.List ol li .toprice span{ color:#CC0000; margin-left:5px;}
+.List ol li span {}
+
+.List ol li .back {	background:#aaa;height:1.5em; padding-top:15px;}
+.List ol li .back a {color:#FFF;}
+.shopcontrol {
+	margin:0 0 10px 0;
+	padding:0;
+	text-align:center;
+}
+.shopcontrol a {
+	display:block;
+	width:25px;
+	height:25px;
+	color:#fff;
+	border-radius:5px;
+	padding: 7px 7px 5px;
+	margin:0 0 5px;
+	font-family:Verdana;
+}
+.shopcontrol a.smiddle {
+	width:73px;
+	height:23px;
+	vertical-align:middle;
+	padding: 10px;
+	margin-top:10px;
+	margin-right:10px;
+	color:#333;
+}
+
+.reveal-modal table {margin:10px auto;}
+.reveal-modal table tr { height:45px;}
+.reveal-modal table tr:hover { background:none; cursor:default;}
+
+.tableinfo {}
+.tableinfo tr:hover { background:none !important; cursor:default !important;}
+
+li.select input[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 99;
+}
+		

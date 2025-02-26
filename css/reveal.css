@@ -1,0 +1,117 @@
+﻿/*	--------------------------------------------------
+	Reveal Modals
+	-------------------------------------------------- */
+
+	.reveal-modal-bg { 
+		position: fixed; 
+		height: 100%;
+		width: 100%;
+		background: #000;
+		background: rgba(0,0,0,.8);
+		z-index: 1002;
+		display: none;
+		top: 0;
+		left: 0; 
+	}
+	
+	.reveal-modal {
+		visibility: hidden;
+		top: 3%; 
+		margin:0 1.5% 0;
+		width: 90%;
+		background: #fff url(../images/modal-gloss.png) no-repeat -200px -80px;
+		position: absolute;
+		z-index: 1005;
+		padding: 20px 40px 34px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+		-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+		-box-shadow: 0 0 10px rgba(0,0,0,.4);
+
+	}
+
+	.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
+	.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
+	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
+	.reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
+	
+	.reveal-modal .close-reveal-modal {
+		font-size: 1.5em;
+		line-height: 1.5em;
+		position: absolute;
+		top: 8px;
+		right: 15px;
+		color: #aaa;
+		text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+		font-weight: bold;
+		cursor: pointer;
+	} 
+	.reveal-modal .child-close-reveal-modal {
+		font-size: 1.5em;
+		line-height: 1.5em;
+		position: absolute;
+		top: 8px;
+		right: 15px;
+		color: #aaa;
+		text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+		font-weight: bold;
+		cursor: pointer;
+	} 
+	
+	.reveal-modal h3{
+		margin: 1em 0 0 .7em!important;
+	}
+	.reveal-modal select {
+		height: 2.5em;
+
+	}
+	.reveal-modal .num {
+		height: 2em;
+		line-height: 1.1em;
+		min-width: auto;
+	}
+	.reveal-modal .serialnumber
+	{
+		font-size: 0.85em;
+		color: #666;
+		vertical-align: top;
+		line-height: 1.8em;
+	}
+	.reveal-modal .unit{
+		font-size: 0.85em;
+		color: #006699;
+		vertical-align: top;
+		line-height: 1.8em;
+	}
+	.reveal-modal .default {
+		background-color: #0184b4!important;
+	}
+	.num2 {
+		height: 1.6em;
+		min-width: 1.6em!important;
+		padding: 3px!important;
+		font-size: 1.15em!important;
+		font-weight: bold;
+	}
+	.nfirm{
+		height: 2em;
+		min-width: 2em!important;
+		padding: 3px 1em!important;
+		font-size: 1em!important;
+	}
+	/*NOTES
+	
+	Close button entity is &#215;
+	
+	Example markup
+	
+	<div id="myModal" class="reveal-modal">
+		<h2>Awesome. I have it.</h2>
+		<p class="lead">Your couch.  I it's mine.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+	
+	*/

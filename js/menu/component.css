@@ -1,0 +1,243 @@
+/* Main menu wrapper */
+.cbp-hsmenu-wrapper {
+	width: 100%;
+	top: 120px; 
+	left: 0;
+	position:absolute;
+	z-index: 30000;
+}
+
+/* Common style for all lists */
+.cbp-hsmenu-wrapper ul {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+}
+
+/* 100% width bar for menu */
+.cbp-hsinner {
+	background: #000;
+	position: relative;
+	z-index: 100;
+}
+
+/* Main menu style */
+.cbp-hsmenu-wrapper .cbp-hsmenu {
+	margin: 0 20px;
+}
+
+.cbp-hsmenu > li {
+	margin: 0 .8em;
+	display: inline-block;
+}
+
+.cbp-hsmenu > li:first-child {
+	margin-left: 0;
+}
+
+/* Main menu link style */
+.cbp-hsmenu > li > a {
+	color: #fff;
+	font-size: 1.063em;
+	line-height: 3em;
+	display: inline-block;
+	position: relative;
+	z-index: 10000;
+	outline: none;
+}
+
+.no-touch .cbp-hsmenu > li > a:hover,
+.no-touch .cbp-hsmenu > li > a:focus,
+.cbp-hsmenu > li.cbp-hsitem-open > a { color: #FFFF00; }
+
+/* Add an arrow to the main menu link if it has a submenu (not the only child) */
+.cbp-hsmenu > li > a:not(:only-child):before {
+	display: inline-block;
+	font-family: 'FontAwesome';
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	content: "\f107";
+	margin-right: 0.3em;
+	opacity: 0.4;
+	vertical-align: middle;
+}
+
+.cbp-hsmenu > li.cbp-hsitem-open > a:not(:only-child):before {
+	content: "\f106";
+}
+
+/* Add a triangle to currently open menu item link */
+.cbp-hsmenu > li.cbp-hsitem-open > a:after {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: transparent;
+	border-top-color: #000;
+	border-width: 10px;
+	left: 50%;
+	margin-left: -10px;
+}
+
+/* Submenu style */
+.cbp-hssubmenu {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	z-index: 0;
+	text-align: center; /* for aligning the sub items */
+	visibility: hidden;
+}
+
+.cbp-hssubmenu:before, 
+.cbp-hssubmenu:after { 
+	content: " "; 
+	display: table; 
+}
+.cbp-hssubmenu:after { 
+	clear: both; 
+}
+
+/* Let's allow 5 item in a row */
+.cbp-hssubmenu > li {
+	width: 19.44%;
+	display: inline-block;
+	vertical-align: top;
+	box-shadow: -28px 0 0 -27px #ddd, 0 -28px 0 -27px #ddd;
+	opacity: 0;
+	-webkit-transition: opacity 0.1s 0s;
+	-moz-transition: opacity 0.1s 0s;
+	transition: opacity 0.1s 0s;
+}
+
+/* First 6 items don't have upper box shadow */
+.cbp-hssubmenu > li:nth-child(-n+5) {
+	box-shadow: -28px 0 0 -27px #ddd;
+} 
+
+/* Every 7th item does not have a left box shadow */
+.cbp-hssubmenu > li:nth-child(5n+1) {
+	box-shadow:  0 -28px 0 -27px #ddd;
+}
+
+/* The first one does not have any box shadow */
+.cbp-hssubmenu > li:first-child {
+	box-shadow: none;
+}
+
+.cbp-hssubmenu > li a {
+	display: block;
+	text-align: center;
+	color: #333333;
+	outline: none;
+	padding: 2em 1em 1em 1em;
+}
+
+.no-touch .cbp-hssubmenu > li a:hover,
+.no-touch .cbp-hssubmenu > li a:focus { color: #00a0e9; }
+
+.cbp-hssubmenu > li a img {
+	border: none;
+	outline: none;
+	display: inline-block;
+	margin: 0;
+	max-width: 100%;
+	max-height:100%;
+	-webkit-transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+}
+
+.no-touch .cbp-hssubmenu > li a:hover img {
+	opacity: 0.7;
+}
+
+.cbp-hssubmenu > li a span {
+	display: block;
+	min-height: 3em;
+	margin-top: 0.4em;
+}
+
+.cbp-hsmenu > li.cbp-hsitem-open .cbp-hssubmenu {
+	z-index: 1000;
+	visibility: visible;
+}
+
+.cbp-hsmenu > li.cbp-hsitem-open .cbp-hssubmenu > li {
+	opacity: 1;
+	-webkit-transition: opacity 0.5s 0.1s;
+	-moz-transition: opacity 0.5s 0.1s;
+	transition: opacity 0.5s 0.1s;
+}
+
+/* Helper div for animating the background */
+.cbp-hsmenubg {
+	background: #f7f7f7;
+	position: absolute;
+	width: 100%;
+	top: 100%;
+	left: 0;
+	z-index: 0;
+	height: 0px;
+	box-shadow:0 0 10px #000,
+	           0 0 10px #ddd;
+	-webkit-box-shadow:0 0 10px #000,
+					   0 0 10px #ddd;
+}
+
+.no-touch .cbp-hsmenubg {
+	-webkit-transition: height 0.3s;
+	-moz-transition: height 0.3s;
+	transition: height 0.3s;
+}
+.banImg {height: 80px;overflow: hidden;}
+
+/*--目的地--*/
+ul.placeName { width:auto;text-align:left; margin:20px !important; padding:0 0 50px; }
+ul.placeName li { width:auto; padding:0; margin:0 10px;box-shadow: none !important;}
+ul.placeName ul { margin:0; padding:0; width:auto;}
+ul.placeName ul li { width:auto; margin:5px 0; padding:0;}
+ul.placeName ul li a {
+	min-width: 100px;
+	display: inline-block;
+	margin: 0;
+	padding: 5px 10px;
+	border: 1px dotted #CCC;
+	color: #333333;
+	border-radius: 5px;
+}
+ul.placeName ul li a:hover, ul.placeName ul li a.here {background: #00a0e9; border:1px dotted #00a0e9; color:#FFF !important;}
+ul.placeName ul li a.here { color:#FF0 !important;}
+ul.placeName ul li a.here:after
+{	
+    font-family: "FontAwesome";
+    content: "\f0da";
+	margin-left:0.5em;
+}
+ul.placeName li .summary { width:350px; height:265px;border:1px dotted #CCC;border-radius:5px;overflow: hidden; margin:5px 0 0 0;}
+ul.placeName li .summary a {margin:0; padding:10px 15px;}
+ul.placeName li .summary h3 { margin:0 0 5px; padding:0;}
+ul.placeName li .summary a:hover h3 { color:#00a0e9;}
+ul.placeName li .summary p {text-align:left;}
+ul.placeName li .summary .img { float:left; margin:0 10px 0 0;}
+ul.placeName li .summary .img img { max-width:190px;max-height:130px;}
+/*--在地職人--*/
+ul.ground { padding:0 0 50px;}
+ul.ground li{ padding:0; margin:0 10px;box-shadow: none !important;}
+ul.ground li a {margin:30px 0 0 0; padding:0;}
+ul.ground li a h2 {font-size: 1.125em;text-align: center; color:#00a0e9;}
+ul.ground ul {padding:0; margin:0;}
+ul.ground li li a{ text-align:left; margin:5px 0; padding: 6px 10px;border: 1px dotted #CCC;color: #333333;border-radius: 5px;}
+ul.ground li li a:hover{ background-color: #00a0e9;border:1px solid #00a0e9; color:#FFF !important;}
+ul.ground li li li a {border:1px dotted #CCC;color: #00a0e9;padding: 5px 10px;}
+ul.ground li li li a:hover{  background-color:transparent;color: #F60 !important;border: 1px dotted #F60;}
+ul.ground li li li a:before{ content: "\f105";font-family: 'FontAwesome'; margin:0 5px 0 0; font-weight:normal;}
+ul.ground .banImg {height: 80px;overflow: hidden;}
