@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <link href="css/design.css" rel="stylesheet" type="text/css" />
+    <link href="css/setStyle1.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      function close_window() {
+        if (confirm('確定離開系統？')) {
+          close();
+        }
+      }
+    </script>
+    <script language="JavaScript">
+      $(function () {
+        // 先取得 div#abgne_marquee ul
+        // 接著把 ul 中的 li 項目再重覆加入 ul 中(等於有兩組內容)
+        // 再來取得 div#abgne_marquee 的高來決定每次跑馬燈移動的距離
+        // 設定跑馬燈移動的速度及輪播的速度
+        var $marqueeUl = $('div#abgne_marquee ul'),
+          $marqueeli = $marqueeUl.append($marqueeUl.html()).children(),
+          _height = $('div#abgne_marquee').height() * -1,
+          scrollSpeed = 600,
+          timer,
+          speed = 3000 + scrollSpeed;
+
+        // 幫左邊 $marqueeli 加上 hover 事件
+        // 當滑鼠移入時停止計時器；反之則啟動
+        $marqueeli.hover(
+          function () {
+            clearTimeout(timer);
+          },
+          function () {
+            timer = setTimeout(showad, speed);
+          }
+        );
+
+        // 控制跑馬燈移動的處理函式
+        function showad() {
+          var _now = $marqueeUl.position().top / _height;
+          _now = (_now + 1) % $marqueeli.length;
+
+          // $marqueeUl 移動
+          $marqueeUl.animate(
+            {
+              top: _now * _height,
+            },
+            scrollSpeed,
+            function () {
+              // 如果已經移動到第二組時...則馬上把 top 設 0 來回到第一組
+              // 藉此產生不間斷的輪播
+              if (_now == $marqueeli.length / 2) {
+                $marqueeUl.css('top', 0);
+              }
+            }
+          );
+
+          // 再啟動計時器
+          timer = setTimeout(showad, speed);
+        }
+
+        // 啟動計時器
+        timer = setTimeout(showad, speed);
+
+        $('a').focus(function () {
+          this.blur();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- header -->
+    <div class="header">
+      <h1><img src="images/logo.png" alt="農藥銷售網頁版 POS" /></h1>
+      <h2>POS公告</h2>
+      <div class="close">
+        <ul>
+          <li>
+            <a href="#" onclick="javascript:location.href='#'">切換使用者<img src="images/icon-user.png" /></a>
+          </li>
+          <li>
+            <a href="#" onclick="javascript:location.href='01.login_new.html'">登出<img src="images/icon-logout.png" /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main">
+      <form id="form1" name="form1" method="post" action="02.main-simple.html">
+        <input type="submit" name="button" id="button" value="進入系統" class="enter-system" />
+      </form>
+      <ol class="news">
+        <li>
+          <span class="date">2015/12/24</span>
+          <a href="https://pest.baphiq.gov.tw/BAPHIQ/wSite/baphiq/cp.jsp?bId=G&dataId=A&cpId=1690" target="_blank">農藥POS改版內容<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/05/05</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1352" target="_blank"
+            >公告「依滅列」等17種農藥之延伸使用方法與範圍如附件公告「依滅列」等17種農藥之延伸使用方法與範圍如附件公告「依滅列」等17種農藥之延伸使用方法與範圍如附件公告「依滅列」等17種農藥之延伸使用方法與範圍如附件公告「依滅列」等17種農藥之延伸使用方法與範圍如附件<span class="dept"
+              >農藥資訊服務網</span
+            ></a
+          >
+        </li>
+        <li>
+          <span class="date">2016/04/27</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1345" target="_blank">訂定「農藥管理法第三十五條第二項所定農藥生產業或販賣業者應定期陳報資料之格式內容頻率及方式」<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/04/27</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1344" target="_blank">公告重新認可國立中興大學農產品農藥殘留檢測中心為農藥田間試驗單位<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/04/25</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1346" target="_blank">預告訂定賽速安勃等十種農藥有效成分檢驗方法及修正覆滅?等三種農藥有效成分檢驗方法<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/04/12</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1339" target="_blank">公告「氯酸鈉」1種新農藥之使用方法與範圍如附件<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/04/11</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1340" target="_blank">十字花科小葉菜類及包葉菜類用藥種類與水稻除草劑等作用機制宣導單張<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/04/08</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1333" target="_blank">公告「益達胺」等14種農藥之延伸使用方法與範圍如附件<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/03/07</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1313" target="_blank">農用藥劑分類及作用機制檢索<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/03/03</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1326" target="_blank">修正105年03月02日防檢三字第1051488185號公告<span class="dept">農藥資訊服務網</span></a>
+        </li>
+        <li>
+          <span class="date">2016/03/02</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1327" target="_blank">修正105年02月26日防檢三字第1051488168號公告<span class="dept">農藥資訊服務網</span></a>
+        </li>
+
+        <li>
+          <span class="date">2016/02/26</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1324" target="_blank">公告「氟比賽得」等4種農藥使用方法及其範圍如附件<span class="dept">農藥資訊服務網</span></a>
+        </li>
+
+        <li>
+          <span class="date">2016/02/23</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1325" target="_blank">預告訂定「農藥管理法第三十五條第二項所定農藥生產業或販賣業者應定期陳報資料之格式內容頻率及方式」<span class="dept">農藥資訊服務網</span></a>
+        </li>
+
+        <li>
+          <span class="date">2016/02/17</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1318" target="_blank">公告認可立農化學股份有限公司為農藥田間試驗單位<span class="dept">農藥資訊服務網</span></a>
+        </li>
+
+        <li>
+          <span class="date">2016/02/05</span>
+          <a href="/BAPHIQ/wSite/baphiq/cp.jsp?pk=1320" target="_blank">公告「速殺氟」等6種新農藥及新混合劑普通名稱如附件<span class="dept">農藥資訊服務網</span></a>
+        </li>
+      </ol>
+      <div class="more"><a href="https://pest.baphiq.gov.tw/BAPHIQ/wSite/baphiq/lp.jsp?bId=G&dataId=A" target="_blank">更多公告</a></div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="f-logo">
+        <img src="images/f_logo.png" alt="行政院農業委員會 動植物防疫檢疫局logo" />
+      </div>
+      <p>
+        行政院農業委員會 動植物防疫檢疫局<br />
+        客服專線：0800-035-228&nbsp;&nbsp;&nbsp;聯絡信箱：<a href="mailto:pest@hyweb.com.tw">pest@hyweb.com.tw</a>
+      </p>
+      <ul class="copyright">
+        <li><a href="#">隱私權宣告</a></li>
+        <li><a href="#">資訊安全政策</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

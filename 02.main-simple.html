@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <link href="css/design.css" rel="stylesheet" type="text/css" />
+    <link href="css/setStyle1.css" rel="stylesheet" type="text/css" />
+
+    <!--script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script-->
+    <script type="text/javascript" src="js/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      function close_window() {
+        if (confirm('確定離開系統？')) {
+          close();
+        }
+      }
+    </script>
+    <script language="JavaScript">
+      $(function () {
+        // 先取得 div#abgne_marquee ul
+        // 接著把 ul 中的 li 項目再重覆加入 ul 中(等於有兩組內容)
+        // 再來取得 div#abgne_marquee 的高來決定每次跑馬燈移動的距離
+        // 設定跑馬燈移動的速度及輪播的速度
+        var $marqueeUl = $('div#abgne_marquee ul'),
+          $marqueeli = $marqueeUl.append($marqueeUl.html()).children(),
+          _height = $('div#abgne_marquee').height() * -1,
+          scrollSpeed = 600,
+          timer,
+          speed = 3000 + scrollSpeed;
+
+        // 幫左邊 $marqueeli 加上 hover 事件
+        // 當滑鼠移入時停止計時器；反之則啟動
+        $marqueeli.hover(
+          function () {
+            clearTimeout(timer);
+          },
+          function () {
+            timer = setTimeout(showad, speed);
+          }
+        );
+
+        // 控制跑馬燈移動的處理函式
+        function showad() {
+          var _now = $marqueeUl.position().top / _height;
+          _now = (_now + 1) % $marqueeli.length;
+
+          // $marqueeUl 移動
+          $marqueeUl.animate(
+            {
+              top: _now * _height,
+            },
+            scrollSpeed,
+            function () {
+              // 如果已經移動到第二組時...則馬上把 top 設 0 來回到第一組
+              // 藉此產生不間斷的輪播
+              if (_now == $marqueeli.length / 2) {
+                $marqueeUl.css('top', 0);
+              }
+            }
+          );
+
+          // 再啟動計時器
+          timer = setTimeout(showad, speed);
+        }
+
+        // 啟動計時器
+        timer = setTimeout(showad, speed);
+
+        $('a').focus(function () {
+          this.blur();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1><img src="images/logo.png" alt="農藥銷售網頁版 POS" /></h1>
+      <div class="info">
+        <div class="button">
+          <ul>
+            <li><a href="#">標準銷售模式</a></li>
+            <li><a href="01.login_new.html">登出</a></li>
+          </ul>
+        </div>
+        <div>
+          <span><label>目前日期時間：</label>2018/8/31 13:52:11</span><span><label>店全名：</label>金好康農藥資材行</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="button" style="margin: 25px 35px; text-align: left">
+        <ul class="home" style="height: 420px">
+          <li>
+            <button class="menu size4 color1" onclick="javascript:location.href='03-1.shopv3-simple_blank.html'">銷售作業<br />(成品陳報)</button>
+          </li>
+          <li><button class="menu size4 color2" onclick="javascript:location.href='05-1.mgtv3-Member_list.html'">會員管理</button></li>
+          <li>
+            <button class="menu size4 color3" onclick="javascript:location.href='06-1.mgtv3-simple_Commodity.html'">商品<br />條碼列印</button>
+          </li>
+          <li><button class="menu size4 color4" onclick="javascript:location.href='04-1.salesv3-simple_goodsReturn.html'">銷售單管理</button></li>
+          <li><button class="menu size4 color5" onclick="javascript:location.href='07-1.mgtv3-Inventory_quick.html'">庫存管理</button></li>
+          <li><button class="menu size4 color6" onclick="javascript:location.href='08.systemv3-Setting.html'">系統管理</button></li>
+        </ul>
+      </div>
+      <div class="posbtn">
+        <a href="#"><img src="images/icon-pos.png" alt="" /><span>POS公告</span></a>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="f-logo">
+        <img src="images/f_logo.png" alt="行政院農業委員會 動植物防疫檢疫局logo" />
+      </div>
+      <p>
+        行政院農業委員會 動植物防疫檢疫局<br />
+        客服專線：0800-035-228&nbsp;&nbsp;&nbsp;聯絡信箱：<a href="mailto:pest@hyweb.com.tw">pest@hyweb.com.tw</a>
+      </p>
+      <ul class="copyright">
+        <li><a href="#">隱私權宣告</a></li>
+        <li><a href="#">資訊安全政策</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

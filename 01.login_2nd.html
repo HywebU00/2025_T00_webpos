@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <link href="css/design.css" rel="stylesheet" type="text/css" />
+    <link href="css/setStyle1.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+      function close_window() {
+        if (confirm('確定離開系統？')) {
+          close();
+        }
+      }
+    </script>
+    <script language="JavaScript">
+      $(function () {
+        // 先取得 div#abgne_marquee ul
+        // 接著把 ul 中的 li 項目再重覆加入 ul 中(等於有兩組內容)
+        // 再來取得 div#abgne_marquee 的高來決定每次跑馬燈移動的距離
+        // 設定跑馬燈移動的速度及輪播的速度
+        var $marqueeUl = $('div#abgne_marquee ul'),
+          $marqueeli = $marqueeUl.append($marqueeUl.html()).children(),
+          _height = $('div#abgne_marquee').height() * -1,
+          scrollSpeed = 600,
+          timer,
+          speed = 3000 + scrollSpeed;
+
+        // 幫左邊 $marqueeli 加上 hover 事件
+        // 當滑鼠移入時停止計時器；反之則啟動
+        $marqueeli.hover(
+          function () {
+            clearTimeout(timer);
+          },
+          function () {
+            timer = setTimeout(showad, speed);
+          }
+        );
+
+        // 控制跑馬燈移動的處理函式
+        function showad() {
+          var _now = $marqueeUl.position().top / _height;
+          _now = (_now + 1) % $marqueeli.length;
+
+          // $marqueeUl 移動
+          $marqueeUl.animate(
+            {
+              top: _now * _height,
+            },
+            scrollSpeed,
+            function () {
+              // 如果已經移動到第二組時...則馬上把 top 設 0 來回到第一組
+              // 藉此產生不間斷的輪播
+              if (_now == $marqueeli.length / 2) {
+                $marqueeUl.css('top', 0);
+              }
+            }
+          );
+
+          // 再啟動計時器
+          timer = setTimeout(showad, speed);
+        }
+
+        // 啟動計時器
+        timer = setTimeout(showad, speed);
+
+        $('a').focus(function () {
+          this.blur();
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- header -->
+    <div class="header">
+      <h1><img src="images/logo.png" alt="農藥銷售網頁版 POS" /></h1>
+      <div class="logout_time"><img src="images/icon-logouttime.png" alt="" />剩餘登出時間：19分59秒</div>
+      <h2></h2>
+      <div class="close">
+        <a href="#" onclick="javascript:location.href='01.login_new.html'">離開系統<img src="images/icon-exit.png" alt="" /></a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="login2">
+        <form action="">
+          <label for="pet-select">請輸入使用者帳號：</label>
+          <select name="pets" id="pet-select">
+            <option value="001">001(店長)</option>
+            <option value="002">002(王大明)</option>
+            <option value="003">003(陳小華)</option>
+            <option value="005">005(晚班人員)</option>
+          </select>
+
+          <label for="password">密碼：</label>
+          <input name="password" type="password" placeholder="請輸入密碼" />
+          <div class="btn_grp">
+            <input name="" type="submit" class="btn submitBtn" value="確定" />
+            <input name="" type="reset" class="btn resetBtn" value="清除重設" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="f-logo">
+        <img src="images/f_logo.png" alt="行政院農業委員會 動植物防疫檢疫局logo" />
+      </div>
+      <p>
+        行政院農業委員會 動植物防疫檢疫局<br />
+        客服專線：0800-035-228&nbsp;&nbsp;&nbsp;聯絡信箱：<a href="mailto:pest@hyweb.com.tw">pest@hyweb.com.tw</a>
+      </p>
+      <ul class="copyright">
+        <li><a href="#">隱私權宣告</a></li>
+        <li><a href="#">資訊安全政策</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
